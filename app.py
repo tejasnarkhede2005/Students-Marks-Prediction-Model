@@ -1,3 +1,7 @@
+import streamlit as st
+import pickle
+
+# Professional CSS styling
 st.markdown("""
 <style>
     /* Import professional fonts */
@@ -322,4 +326,148 @@ st.markdown("""
         }
     }
 </style>
+""", unsafe_allow_html=True)
+
+# Load the trained model
+@st.cache_resource
+def load_model():
+    with open('students_marks.pkl', 'rb') as f:
+        model = pickle.load(f)
+    return model
+
+model = load_model()
+
+# App header
+st.title("Student Performance Analytics")
+
+st.markdown("""
+<div class="subtitle">
+    Advanced machine learning model for academic performance prediction
+</div>
+""", unsafe_allow_html=True)
+
+# Information card
+st.markdown("""
+<div class="info-card">
+    <h3>How it works</h3>
+    <p>Our predictive model analyzes course load and study time patterns to forecast academic performance. 
+    Input your current academic parameters below to receive an evidence-based performance prediction.</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Input section
+st.markdown("""<div class="section-header">Input Parameters</div>""", unsafe_allow_html=True)
+
+# Create columns for professional layout
+col1, col2 = st.columns(2, gap="large")
+
+with col1:
+    number_courses = st.number_input(
+        "Number of Courses",
+        min_value=1,
+        max_value=10,
+        value=3,
+        help="Total number of courses you are currently enrolled in"
+    )
+
+with col2:
+    time_study = st.number_input(
+        "Weekly Study Hours",
+        min_value=0.0,
+        max_value=80.0,
+        value=20.0,
+        step=0.5,
+        help="Average number of hours you study per week"
+    )
+
+# Analysis section
+st.markdown("""<div class="section-header">Performance Analysis</div>""", unsafe_allow_html=True)
+
+# Prediction button
+if st.button("Generate Performance Prediction", type="primary"):
+    with st.spinner('Analyzing academic parameters...'):
+        import time
+        time.sleep(1)  # Professional loading experience
+        
+        features = [[number_courses, time_study]]
+        prediction = model.predict(features)[0]
+        
+        # Display result in professional card format
+        st.markdown(f"""
+        <div class="result-card">
+            <h2>{prediction:.1f}%</h2>
+            <p>Predicted Academic Performance</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Professional metrics display
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric(
+                label="Course Load",
+                value=f"{number_courses} courses",
+                delta=f"{number_courses - 3} vs average" if number_courses != 3 else "Average load"
+            )
+        
+        with col2:
+            st.metric(
+                label="Study Commitment",
+                value=f"{time_study} hrs/week",
+                delta=f"{time_study - 20:.1f} vs recommended" if time_study != 20 else "Optimal"
+            )
+        
+        with col3:
+            performance_level = "Excellent" if prediction >= 85 else "Good" if prediction >= 75 else "Average" if prediction >= 65 else "Below Average"
+            st.metric(
+                label="Performance Level",
+                value=performance_level,
+                delta=None
+            )
+        
+        # Professional recommendations
+        st.markdown("""<div class="section-header">Recommendations</div>""", unsafe_allow_html=True)
+        
+        if prediction >= 85:
+            st.success("🎯 **Excellent trajectory** - Your current study pattern indicates strong academic performance. Consider challenging yourself with advanced coursework.")
+        elif prediction >= 75:
+            st.success("✅ **Solid performance** - You're on track for good results. Maintain consistent study habits.")
+        elif prediction >= 65:
+            st.warning("⚠️ **Room for improvement** - Consider optimizing your study schedule or reducing course load for better outcomes.")
+        else:
+            st.error("📈 **Action required** - Your current parameters suggest academic challenges. We recommend academic counseling or study strategy adjustment.")
+
+# Additional insights section
+if st.session_state.get('show_insights', False) or st.button("Show Detailed Insights", type="secondary"):
+    st.session_state.show_insights = True
+    
+    st.markdown("""<div class="section-header">Academic Insights</div>""", unsafe_allow_html=True)
+    
+    # Professional analysis cards
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class="info-card">
+            <h3>Study-Performance Correlation</h3>
+            <p>Research indicates optimal study time ranges between 15-25 hours per week for undergraduate students, 
+            with diminishing returns beyond 30 hours due to fatigue and reduced retention.</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="info-card">
+            <h3>Course Load Impact</h3>
+            <p>Students taking 3-4 courses typically achieve higher individual course performance compared to 
+            those with 5+ courses, due to improved focus and time allocation per subject.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+# Professional footer
+st.markdown("""
+<div class="footer">
+    <p><strong>Student Performance Analytics</strong> | Advanced Predictive Modeling</p>
+    <p>Powered by Machine Learning • Built with Streamlit</p>
+</div>
 """, unsafe_allow_html=True)
