@@ -9,7 +9,7 @@ st.markdown("""
     
     /* Global styling */
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2d3748 0%, #1a202c 50%, #000000 100%);
         min-height: 100vh;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -19,11 +19,11 @@ st.markdown("""
         padding-top: 3rem;
         padding-bottom: 3rem;
         max-width: 900px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
+        background: rgba(45, 55, 72, 0.15);
+        backdrop-filter: blur(15px);
         border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
         margin: 2rem auto;
         padding-left: 3rem;
         padding-right: 3rem;
@@ -37,8 +37,8 @@ st.markdown("""
         font-size: 2.25rem !important;
         margin-bottom: 0.5rem !important;
         letter-spacing: -0.025em !important;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.3) !important;
-        background: linear-gradient(135deg, #ffffff, #f0f9ff, #ffffff) !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.4) !important;
+        background: linear-gradient(135deg, #ffffff, #e2e8f0, #cbd5e0) !important;
         background-size: 200% 200% !important;
         -webkit-background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
@@ -113,8 +113,8 @@ st.markdown("""
     
     /* Button styling */
     .stButton > button {
-        background: linear-gradient(135deg, #667eea, #764ba2) !important;
-        border: none !important;
+        background: linear-gradient(135deg, #4a5568, #2d3748) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
         border-radius: 10px !important;
         color: #ffffff !important;
         font-weight: 600 !important;
@@ -126,13 +126,14 @@ st.markdown("""
         cursor: pointer !important;
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
     }
     
     .stButton > button:hover {
-        background: linear-gradient(135deg, #764ba2, #667eea) !important;
+        background: linear-gradient(135deg, #2d3748, #4a5568) !important;
         transform: translateY(-2px) !important;
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6) !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
     }
     
     .stButton > button:active {
@@ -182,13 +183,13 @@ st.markdown("""
     
     /* Custom card styling */
     .info-card {
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(45, 55, 72, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
         padding: 1.5rem;
         margin: 1.5rem 0;
         backdrop-filter: blur(15px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
     
     .info-card h3 {
@@ -196,27 +197,27 @@ st.markdown("""
         font-size: 1.125rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     }
     
     .info-card p {
-        color: #f1f5f9;
+        color: #e2e8f0;
         font-size: 0.95rem;
         line-height: 1.5;
         margin: 0;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
     
     /* Results card */
     .result-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #4a5568 0%, #2d3748 50%, #1a202c 100%);
         border-radius: 16px;
         padding: 2.5rem;
         text-align: center;
         margin-top: 2rem;
         color: white;
-        box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.3), 0 10px 10px -5px rgba(118, 75, 162, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .result-card h2 {
@@ -224,7 +225,11 @@ st.markdown("""
         font-weight: 700;
         margin-bottom: 0.5rem;
         font-family: 'JetBrains Mono', monospace;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(135deg, #ffffff, #e2e8f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
     
     .result-card p {
@@ -264,11 +269,11 @@ st.markdown("""
     
     /* Metrics styling */
     [data-testid="metric-container"] {
-        background: rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        background: rgba(45, 55, 72, 0.2) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
         border-radius: 12px !important;
         padding: 1.5rem !important;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
         backdrop-filter: blur(15px) !important;
     }
     
@@ -283,7 +288,7 @@ st.markdown("""
     /* Metric labels and values */
     [data-testid="metric-container"] div[data-testid="metric-container"] > div {
         color: #ffffff !important;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
     }
     
     /* Hide Streamlit branding */
