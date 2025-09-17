@@ -31,16 +31,18 @@ st.markdown("""
     
     /* Title styling */
     h1 {
-        background: linear-gradient(135deg, #667eea, #764ba2, #f093fb) !important;
-        background-size: 200% 200% !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        background-clip: text !important;
+        color: #ffffff !important;
         text-align: center !important;
         font-weight: 700 !important;
         font-size: 2.25rem !important;
         margin-bottom: 0.5rem !important;
         letter-spacing: -0.025em !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.3) !important;
+        background: linear-gradient(135deg, #ffffff, #f0f9ff, #ffffff) !important;
+        background-size: 200% 200% !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
         animation: gradientShift 4s ease infinite !important;
     }
     
@@ -53,58 +55,60 @@ st.markdown("""
     /* Subtitle styling */
     .subtitle {
         text-align: center;
-        color: #4c1d95;
+        color: #ffffff;
         font-size: 1.125rem;
         font-weight: 500;
         margin-bottom: 3rem;
         line-height: 1.5;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        opacity: 0.95;
     }
     
     /* Section headers */
     .section-header {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #ffffff;
         font-size: 1.25rem;
         font-weight: 600;
         margin-bottom: 1.5rem;
         margin-top: 2rem;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid #e0e7ff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     }
     
     /* Input field styling */
     .stNumberInput > div > div > input {
-        background-color: #ffffff !important;
-        border: 1.5px solid #d1d5db !important;
-        border-radius: 6px !important;
-        color: #374151 !important;
-        font-weight: 400 !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 8px !important;
+        color: #1e293b !important;
+        font-weight: 500 !important;
         font-size: 1rem !important;
         padding: 12px 16px !important;
-        transition: all 0.2s ease !important;
+        transition: all 0.3s ease !important;
+        backdrop-filter: blur(5px) !important;
     }
     
     .stNumberInput > div > div > input:focus {
         outline: none !important;
-        border-color: #3b82f6 !important;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+        border-color: #ffffff !important;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.4) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
     }
     
     .stNumberInput > div > div > input:hover {
-        border-color: #9ca3af !important;
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
     }
     
     /* Label styling */
     .stNumberInput > label {
-        color: #4c1d95 !important;
+        color: #ffffff !important;
         font-weight: 600 !important;
-        font-size: 0.95rem !important;
-        margin-bottom: 6px !important;
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
         display: block !important;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
     }
     
     /* Button styling */
@@ -178,27 +182,29 @@ st.markdown("""
     
     /* Custom card styling */
     .info-card {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-        border: 1px solid rgba(102, 126, 234, 0.2);
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 12px;
         padding: 1.5rem;
         margin: 1.5rem 0;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     
     .info-card h3 {
-        color: #4c1d95;
+        color: #ffffff;
         font-size: 1.125rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     
     .info-card p {
-        color: #6b46c1;
+        color: #f1f5f9;
         font-size: 0.95rem;
         line-height: 1.5;
         margin: 0;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
     
     /* Results card */
@@ -233,18 +239,21 @@ st.markdown("""
         text-align: center;
         margin-top: 4rem;
         padding-top: 2rem;
-        border-top: 1px solid rgba(102, 126, 234, 0.3);
-        color: #6b46c1;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
         font-size: 0.875rem;
         font-weight: 500;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
     
     .footer p {
         margin: 0.25rem 0;
+        opacity: 0.9;
     }
     
     .footer strong {
-        color: #4c1d95;
+        color: #ffffff;
+        opacity: 1;
     }
     
     /* Loading spinner customization */
@@ -255,20 +264,26 @@ st.markdown("""
     
     /* Metrics styling */
     [data-testid="metric-container"] {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)) !important;
-        border: 1px solid rgba(102, 126, 234, 0.2) !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
         border-radius: 12px !important;
         padding: 1.5rem !important;
-        box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1) !important;
-        backdrop-filter: blur(10px) !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+        backdrop-filter: blur(15px) !important;
     }
     
     [data-testid="metric-container"] > div {
-        color: #4c1d95 !important;
+        color: #ffffff !important;
     }
     
     [data-testid="metric-container"] [data-testid="metric-container"] div[data-testid="metric-container"] {
         font-weight: 600 !important;
+    }
+    
+    /* Metric labels and values */
+    [data-testid="metric-container"] div[data-testid="metric-container"] > div {
+        color: #ffffff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
     }
     
     /* Hide Streamlit branding */
