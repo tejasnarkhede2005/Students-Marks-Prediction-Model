@@ -1,164 +1,254 @@
 import streamlit as st
 import pickle
 
-# Custom CSS for modern, fashionable styling
+# Professional CSS styling
 st.markdown("""
 <style>
-    /* Import Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    /* Import professional fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
     
     /* Global styling */
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        font-family: 'Poppins', sans-serif;
+        background-color: #f8fafc;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
     /* Main container */
     .main .block-container {
         padding-top: 3rem;
         padding-bottom: 3rem;
-        max-width: 800px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        max-width: 900px;
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         margin: 2rem auto;
+        padding-left: 3rem;
+        padding-right: 3rem;
     }
     
     /* Title styling */
     h1 {
-        color: #ffffff !important;
+        color: #1e293b !important;
         text-align: center !important;
         font-weight: 700 !important;
-        font-size: 2.5rem !important;
-        margin-bottom: 2rem !important;
-        text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-        background-size: 200% 200%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient 3s ease infinite;
+        font-size: 2.25rem !important;
+        margin-bottom: 0.5rem !important;
+        letter-spacing: -0.025em !important;
     }
     
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    /* Subtitle styling */
+    .subtitle {
+        text-align: center;
+        color: #64748b;
+        font-size: 1.125rem;
+        font-weight: 400;
+        margin-bottom: 3rem;
+        line-height: 1.5;
+    }
+    
+    /* Section headers */
+    .section-header {
+        color: #374151;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e5e7eb;
     }
     
     /* Input field styling */
     .stNumberInput > div > div > input {
-        background: rgba(255, 255, 255, 0.2) !important;
-        border: 2px solid rgba(255, 255, 255, 0.3) !important;
-        border-radius: 15px !important;
-        color: #ffffff !important;
-        font-weight: 500 !important;
+        background-color: #ffffff !important;
+        border: 1.5px solid #d1d5db !important;
+        border-radius: 6px !important;
+        color: #374151 !important;
+        font-weight: 400 !important;
+        font-size: 1rem !important;
         padding: 12px 16px !important;
-        backdrop-filter: blur(5px) !important;
-        transition: all 0.3s ease !important;
+        transition: all 0.2s ease !important;
     }
     
     .stNumberInput > div > div > input:focus {
-        border-color: #4ecdc4 !important;
-        box-shadow: 0 0 20px rgba(78, 205, 196, 0.4) !important;
-        transform: translateY(-2px) !important;
+        outline: none !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+    }
+    
+    .stNumberInput > div > div > input:hover {
+        border-color: #9ca3af !important;
     }
     
     /* Label styling */
     .stNumberInput > label {
-        color: #ffffff !important;
-        font-weight: 600 !important;
-        font-size: 1.1rem !important;
-        margin-bottom: 8px !important;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+        color: #374151 !important;
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
+        margin-bottom: 6px !important;
+        display: block !important;
     }
     
     /* Button styling */
     .stButton > button {
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4) !important;
+        background-color: #3b82f6 !important;
         border: none !important;
-        border-radius: 25px !important;
-        color: white !important;
-        font-weight: 600 !important;
-        font-size: 1.1rem !important;
-        padding: 12px 30px !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        margin-top: 20px !important;
+        border-radius: 6px !important;
+        color: #ffffff !important;
+        font-weight: 500 !important;
+        font-size: 1rem !important;
+        padding: 12px 32px !important;
+        transition: all 0.2s ease !important;
         width: 100% !important;
+        margin-top: 2rem !important;
+        cursor: pointer !important;
     }
     
     .stButton > button:hover {
-        transform: translateY(-3px) !important;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
-        background: linear-gradient(45deg, #4ecdc4, #ff6b6b) !important;
+        background-color: #2563eb !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15) !important;
     }
     
     .stButton > button:active {
-        transform: translateY(-1px) !important;
+        transform: translateY(0) !important;
+        background-color: #1d4ed8 !important;
     }
     
     /* Success message styling */
     .stSuccess {
-        background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
-        border: none !important;
-        border-radius: 15px !important;
-        color: white !important;
-        font-weight: 600 !important;
-        font-size: 1.2rem !important;
-        padding: 20px !important;
-        box-shadow: 0 4px 20px rgba(78, 205, 196, 0.4) !important;
+        background-color: #f0f9f4 !important;
+        border: 1px solid #bbf7d0 !important;
+        border-left: 4px solid #10b981 !important;
+        border-radius: 6px !important;
+        color: #065f46 !important;
+        font-weight: 500 !important;
+        padding: 16px 20px !important;
+        margin-top: 2rem !important;
+    }
+    
+    .stSuccess > div {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Warning/Info messages */
+    .stWarning {
+        background-color: #fffbeb !important;
+        border: 1px solid #fed7aa !important;
+        border-left: 4px solid #f59e0b !important;
+        border-radius: 6px !important;
+        color: #92400e !important;
+        padding: 16px 20px !important;
+    }
+    
+    .stInfo {
+        background-color: #eff6ff !important;
+        border: 1px solid #bfdbfe !important;
+        border-left: 4px solid #3b82f6 !important;
+        border-radius: 6px !important;
+        color: #1e40af !important;
+        padding: 16px 20px !important;
+    }
+    
+    /* Columns spacing */
+    .element-container {
+        margin-bottom: 1rem;
+    }
+    
+    /* Custom card styling */
+    .info-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .info-card h3 {
+        color: #1e293b;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-card p {
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+    
+    /* Results card */
+    .result-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+        color: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .result-card h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .result-card p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin: 0;
+    }
+    
+    /* Footer styling */
+    .footer {
+        text-align: center;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 0.875rem;
+    }
+    
+    /* Loading spinner customization */
+    .stSpinner {
         text-align: center !important;
-        margin-top: 20px !important;
+        color: #3b82f6 !important;
     }
     
-    /* Add some floating particles effect */
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.3) 0%, transparent 50%);
-        pointer-events: none;
-        z-index: -1;
+    /* Metrics styling */
+    [data-testid="metric-container"] {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     }
     
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
+    [data-testid="metric-container"] > div {
+        color: #374151;
     }
     
-    ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-        border-radius: 10px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
-    }
+    /* Hide Streamlit branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
     
     /* Mobile responsiveness */
     @media (max-width: 768px) {
         .main .block-container {
             margin: 1rem;
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
         }
         
         h1 {
-            font-size: 2rem !important;
+            font-size: 1.875rem !important;
+        }
+        
+        .result-card h2 {
+            font-size: 2rem;
         }
     }
 </style>
@@ -173,59 +263,137 @@ def load_model():
 
 model = load_model()
 
-# App title with emoji
-st.title("🎓 Student Marks Prediction")
+# App header
+st.title("Student Performance Analytics")
 
-# Add some spacing and description
 st.markdown("""
-<div style="text-align: center; margin-bottom: 2rem;">
-    <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; font-weight: 300;">
-        Predict your academic performance with our AI-powered tool
-    </p>
+<div class="subtitle">
+    Advanced machine learning model for academic performance prediction
 </div>
 """, unsafe_allow_html=True)
 
-# Create columns for better layout
-col1, col2 = st.columns(2)
+# Information card
+st.markdown("""
+<div class="info-card">
+    <h3>How it works</h3>
+    <p>Our predictive model analyzes course load and study time patterns to forecast academic performance. 
+    Input your current academic parameters below to receive an evidence-based performance prediction.</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Input section
+st.markdown("""<div class="section-header">Input Parameters</div>""", unsafe_allow_html=True)
+
+# Create columns for professional layout
+col1, col2 = st.columns(2, gap="large")
 
 with col1:
-    # Input fields
-    number_courses = st.number_input("📚 Number of Courses", min_value=1, max_value=10, value=3)
+    number_courses = st.number_input(
+        "Number of Courses",
+        min_value=1,
+        max_value=10,
+        value=3,
+        help="Total number of courses you are currently enrolled in"
+    )
 
 with col2:
-    time_study = st.number_input("⏰ Study Time (hours)", min_value=0.0, max_value=20.0, value=5.0)
+    time_study = st.number_input(
+        "Weekly Study Hours",
+        min_value=0.0,
+        max_value=80.0,
+        value=20.0,
+        step=0.5,
+        help="Average number of hours you study per week"
+    )
 
-# Add some spacing
-st.markdown("<br>", unsafe_allow_html=True)
+# Analysis section
+st.markdown("""<div class="section-header">Performance Analysis</div>""", unsafe_allow_html=True)
 
-# Prediction
-if st.button("🚀 Predict My Marks"):
-    features = [[number_courses, time_study]]
-    prediction = model.predict(features)[0]
-    
-    # Add a slight delay for dramatic effect (optional)
-    import time
-    with st.spinner('🔮 Calculating your predicted marks...'):
-        time.sleep(1)
-    
-    st.success(f"🎯 Predicted Marks: {prediction:.2f}%")
-    
-    # Add motivational message based on prediction
-    if prediction >= 80:
-        st.balloons()
-        st.markdown("🌟 **Excellent performance expected! Keep up the great work!**")
-    elif prediction >= 70:
-        st.markdown("👍 **Good job! You're on the right track!**")
-    elif prediction >= 60:
-        st.markdown("💪 **You can do better! Consider increasing your study time.**")
-    else:
-        st.markdown("📈 **There's room for improvement! Try taking fewer courses or studying more.**")
+# Prediction button
+if st.button("Generate Performance Prediction", type="primary"):
+    with st.spinner('Analyzing academic parameters...'):
+        import time
+        time.sleep(1)  # Professional loading experience
+        
+        features = [[number_courses, time_study]]
+        prediction = model.predict(features)[0]
+        
+        # Display result in professional card format
+        st.markdown(f"""
+        <div class="result-card">
+            <h2>{prediction:.1f}%</h2>
+            <p>Predicted Academic Performance</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Professional metrics display
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric(
+                label="Course Load",
+                value=f"{number_courses} courses",
+                delta=f"{number_courses - 3} vs average" if number_courses != 3 else "Average load"
+            )
+        
+        with col2:
+            st.metric(
+                label="Study Commitment",
+                value=f"{time_study} hrs/week",
+                delta=f"{time_study - 20:.1f} vs recommended" if time_study != 20 else "Optimal"
+            )
+        
+        with col3:
+            performance_level = "Excellent" if prediction >= 85 else "Good" if prediction >= 75 else "Average" if prediction >= 65 else "Below Average"
+            st.metric(
+                label="Performance Level",
+                value=performance_level,
+                delta=None
+            )
+        
+        # Professional recommendations
+        st.markdown("""<div class="section-header">Recommendations</div>""", unsafe_allow_html=True)
+        
+        if prediction >= 85:
+            st.success("🎯 **Excellent trajectory** - Your current study pattern indicates strong academic performance. Consider challenging yourself with advanced coursework.")
+        elif prediction >= 75:
+            st.success("✅ **Solid performance** - You're on track for good results. Maintain consistent study habits.")
+        elif prediction >= 65:
+            st.warning("⚠️ **Room for improvement** - Consider optimizing your study schedule or reducing course load for better outcomes.")
+        else:
+            st.error("📈 **Action required** - Your current parameters suggest academic challenges. We recommend academic counseling or study strategy adjustment.")
 
-# Footer
+# Additional insights section
+if st.session_state.get('show_insights', False) or st.button("Show Detailed Insights", type="secondary"):
+    st.session_state.show_insights = True
+    
+    st.markdown("""<div class="section-header">Academic Insights</div>""", unsafe_allow_html=True)
+    
+    # Professional analysis cards
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class="info-card">
+            <h3>Study-Performance Correlation</h3>
+            <p>Research indicates optimal study time ranges between 15-25 hours per week for undergraduate students, 
+            with diminishing returns beyond 30 hours due to fatigue and reduced retention.</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="info-card">
+            <h3>Course Load Impact</h3>
+            <p>Students taking 3-4 courses typically achieve higher individual course performance compared to 
+            those with 5+ courses, due to improved focus and time allocation per subject.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+# Professional footer
 st.markdown("""
-<div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-    <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
-        Made with ❤️ using Streamlit | Powered by Machine Learning
-    </p>
+<div class="footer">
+    <p><strong>Student Performance Analytics</strong> | Advanced Predictive Modeling</p>
+    <p>Powered by Machine Learning • Built with Streamlit</p>
 </div>
 """, unsafe_allow_html=True)
