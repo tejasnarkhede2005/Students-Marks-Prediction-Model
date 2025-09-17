@@ -468,6 +468,7 @@ if st.session_state.get('show_insights', False) or st.button("Show Detailed Insi
 st.markdown("""
 <div class="footer">
     <p><strong>Student Performance Analytics</strong> | Advanced Predictive Modeling</p>
-    <p>Powered by Machine Learning • Built with Streamlit</p>
+    <p>Powered by Machine Learning • Built By Tejas</p>
 </div>
 """, unsafe_allow_html=True)
+
