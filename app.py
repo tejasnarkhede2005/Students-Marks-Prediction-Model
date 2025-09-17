@@ -31,19 +31,18 @@ st.markdown("""
     
     /* Title styling */
     h1 {
-        color: #ffffff !important;
         text-align: center !important;
         font-weight: 700 !important;
         font-size: 2.25rem !important;
         margin-bottom: 0.5rem !important;
         letter-spacing: -0.025em !important;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.4) !important;
-        background: linear-gradient(135deg, #ffffff, #e2e8f0, #cbd5e0) !important;
+        background: linear-gradient(135deg, #f7fafc, #cbd5e0, #a0aec0) !important;
         background-size: 200% 200% !important;
         -webkit-background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
         background-clip: text !important;
         animation: gradientShift 4s ease infinite !important;
+        filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.1)) !important;
     }
     
     @keyframes gradientShift {
@@ -55,33 +54,36 @@ st.markdown("""
     /* Subtitle styling */
     .subtitle {
         text-align: center;
-        color: #ffffff;
+        color: #cbd5e0;
         font-size: 1.125rem;
-        font-weight: 500;
+        font-weight: 400;
         margin-bottom: 3rem;
         line-height: 1.5;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        opacity: 0.95;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        opacity: 0.9;
     }
     
     /* Section headers */
     .section-header {
-        color: #ffffff;
+        background: linear-gradient(135deg, #f7fafc, #e2e8f0, #cbd5e0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         font-size: 1.25rem;
         font-weight: 600;
         margin-bottom: 1.5rem;
         margin-top: 2rem;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        border-bottom: 2px solid rgba(203, 213, 224, 0.3);
+        filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.1));
     }
     
     /* Input field styling */
     .stNumberInput > div > div > input {
-        background: rgba(255, 255, 255, 0.9) !important;
-        border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+        background: rgba(45, 55, 72, 0.6) !important;
+        border: 1.5px solid rgba(203, 213, 224, 0.2) !important;
         border-radius: 8px !important;
-        color: #1e293b !important;
+        color: #f7fafc !important;
         font-weight: 500 !important;
         font-size: 1rem !important;
         padding: 12px 16px !important;
@@ -91,32 +93,34 @@ st.markdown("""
     
     .stNumberInput > div > div > input:focus {
         outline: none !important;
-        border-color: #ffffff !important;
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.4) !important;
-        background: rgba(255, 255, 255, 0.95) !important;
+        border-color: #cbd5e0 !important;
+        box-shadow: 0 0 0 3px rgba(203, 213, 224, 0.2), 0 0 15px rgba(203, 213, 224, 0.3) !important;
+        background: rgba(45, 55, 72, 0.8) !important;
+        color: #ffffff !important;
     }
     
     .stNumberInput > div > div > input:hover {
-        border-color: rgba(255, 255, 255, 0.5) !important;
-        background: rgba(255, 255, 255, 0.95) !important;
+        border-color: rgba(203, 213, 224, 0.3) !important;
+        background: rgba(45, 55, 72, 0.7) !important;
     }
     
     /* Label styling */
     .stNumberInput > label {
-        color: #ffffff !important;
-        font-weight: 600 !important;
+        color: #e2e8f0 !important;
+        font-weight: 500 !important;
         font-size: 1rem !important;
         margin-bottom: 8px !important;
         display: block !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+        opacity: 0.95 !important;
     }
     
     /* Button styling */
     .stButton > button {
-        background: linear-gradient(135deg, #4a5568, #2d3748) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        background: linear-gradient(135deg, #4a5568, #2d3748, #1a202c) !important;
+        border: 1px solid rgba(203, 213, 224, 0.2) !important;
         border-radius: 10px !important;
-        color: #ffffff !important;
+        color: #e2e8f0 !important;
         font-weight: 600 !important;
         font-size: 1rem !important;
         padding: 14px 32px !important;
@@ -127,13 +131,15 @@ st.markdown("""
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
     }
     
     .stButton > button:hover {
-        background: linear-gradient(135deg, #2d3748, #4a5568) !important;
+        background: linear-gradient(135deg, #2d3748, #4a5568, #2d3748) !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6) !important;
-        border-color: rgba(255, 255, 255, 0.3) !important;
+        border-color: rgba(203, 213, 224, 0.4) !important;
+        color: #f7fafc !important;
     }
     
     .stButton > button:active {
@@ -183,8 +189,8 @@ st.markdown("""
     
     /* Custom card styling */
     .info-card {
-        background: rgba(45, 55, 72, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(45, 55, 72, 0.3);
+        border: 1px solid rgba(203, 213, 224, 0.1);
         border-radius: 12px;
         padding: 1.5rem;
         margin: 1.5rem 0;
@@ -193,19 +199,20 @@ st.markdown("""
     }
     
     .info-card h3 {
-        color: #ffffff;
+        color: #f7fafc;
         font-size: 1.125rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     }
     
     .info-card p {
-        color: #e2e8f0;
+        color: #cbd5e0;
         font-size: 0.95rem;
         line-height: 1.5;
         margin: 0;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        opacity: 0.9;
     }
     
     /* Results card */
@@ -215,9 +222,9 @@ st.markdown("""
         padding: 2.5rem;
         text-align: center;
         margin-top: 2rem;
-        color: white;
+        color: #f7fafc;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(203, 213, 224, 0.1);
     }
     
     .result-card h2 {
@@ -225,18 +232,19 @@ st.markdown("""
         font-weight: 700;
         margin-bottom: 0.5rem;
         font-family: 'JetBrains Mono', monospace;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        background: linear-gradient(135deg, #ffffff, #e2e8f0);
+        background: linear-gradient(135deg, #f7fafc, #e2e8f0, #cbd5e0);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
     }
     
     .result-card p {
         font-size: 1.2rem;
-        opacity: 0.95;
+        opacity: 0.9;
         margin: 0;
         font-weight: 500;
+        color: #e2e8f0;
     }
     
     /* Footer styling */
@@ -244,20 +252,20 @@ st.markdown("""
         text-align: center;
         margin-top: 4rem;
         padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
+        border-top: 1px solid rgba(203, 213, 224, 0.2);
+        color: #cbd5e0;
         font-size: 0.875rem;
-        font-weight: 500;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        font-weight: 400;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
     
     .footer p {
         margin: 0.25rem 0;
-        opacity: 0.9;
+        opacity: 0.8;
     }
     
     .footer strong {
-        color: #ffffff;
+        color: #e2e8f0;
         opacity: 1;
     }
     
@@ -269,8 +277,8 @@ st.markdown("""
     
     /* Metrics styling */
     [data-testid="metric-container"] {
-        background: rgba(45, 55, 72, 0.2) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background: rgba(45, 55, 72, 0.3) !important;
+        border: 1px solid rgba(203, 213, 224, 0.1) !important;
         border-radius: 12px !important;
         padding: 1.5rem !important;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
@@ -278,7 +286,7 @@ st.markdown("""
     }
     
     [data-testid="metric-container"] > div {
-        color: #ffffff !important;
+        color: #f7fafc !important;
     }
     
     [data-testid="metric-container"] [data-testid="metric-container"] div[data-testid="metric-container"] {
@@ -287,8 +295,14 @@ st.markdown("""
     
     /* Metric labels and values */
     [data-testid="metric-container"] div[data-testid="metric-container"] > div {
-        color: #ffffff !important;
+        color: #e2e8f0 !important;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    /* Metric value styling */
+    [data-testid="metric-container"] [data-testid="metric-container"] > div:first-child {
+        color: #f7fafc !important;
+        font-weight: 700 !important;
     }
     
     /* Hide Streamlit branding */
